@@ -6,7 +6,6 @@
         public string Name { get; set; }
         public string Surname { get; set; }
 
-        public int PersonIdCode { get; set; }
 
         public int PhoneNr { get; set; }
 
