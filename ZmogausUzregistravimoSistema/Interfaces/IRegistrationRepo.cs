@@ -31,30 +31,7 @@ namespace ZmogausUzregistravimoSistema.Interfaces
 
         Person UpdatePerson(int id, PersonRequestModel person);
 
-        Person DeletePerson(int id);
-
-
-
-
-        // Updte Person information
-
-        public Person UpdatePersonName(int id, string name);
-
-
-        public Person UpdatePersonSurname(int id, string surname);
-
-        public Person UpdatePersonIdCode(int id, int idcode);
-   
-
-        public Person UpdatePersonPhoneNumber(int id, int phoneNumber);
-
-
-        public Person UpdatePersonEmail(int id, string email);
-
-
-        public Person UpdatePersonPicture(int id, string picture);
-
-
+        Person DeletePersonr(int id);
 
 
         // Place
