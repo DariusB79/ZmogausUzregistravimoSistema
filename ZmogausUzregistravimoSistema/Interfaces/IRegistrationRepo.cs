@@ -1,4 +1,5 @@
-﻿using ZmogausUzregistravimoSistema.Clases;
+﻿using Microsoft.EntityFrameworkCore;
+using ZmogausUzregistravimoSistema.Clases;
 using ZmogausUzregistravimoSistema.RequestModels;
 
 namespace ZmogausUzregistravimoSistema.Interfaces
@@ -30,7 +31,28 @@ namespace ZmogausUzregistravimoSistema.Interfaces
 
         Person UpdatePerson(int id, PersonRequestModel person);
 
-        Person DeletePersonr(int id);
+        Person DeletePerson(int id);
+
+
+
+
+        // Updte Person information
+
+        public Person UpdatePersonName(int id, string name);
+
+
+        public Person UpdatePersonSurname(int id, string surname);
+
+
+        public Person UpdatePersonPhoneNumber(int id, int phoneNumber);
+
+
+        public Person UpdatePersonEmail(int id, string email);
+
+
+        public Person UpdatePersonPicture(int id, string picture);
+
+
 
 
         // Place
@@ -45,5 +67,23 @@ namespace ZmogausUzregistravimoSistema.Interfaces
         Place UpdatePlace(int id, PlaceRequestModel place);
 
         Place  DeletePlace(int id);
-    }
+
+
+
+
+    // Update Place information
+
+
+    public Place UpdatePlaceCity(int id, string city);
+
+
+    public Place UpdatePlaceStreet(int id, string street);
+
+    public Place UpdatePlaceHomeNr(int id, int homeNr);
+
+
+    public Place UpdatePlaceFlatNr(int id, int flatNr);
+
+}
+
 }

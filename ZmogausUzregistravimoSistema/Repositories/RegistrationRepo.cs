@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using ZmogausUzregistravimoSistema.Clases;
 using ZmogausUzregistravimoSistema.Interfaces;
 using ZmogausUzregistravimoSistema.RequestModels;
@@ -7,12 +8,6 @@ namespace ZmogausUzregistravimoSistema.Repositories
 {
     public class RegistrationRepo : IRegistrationRepo
     {
-        //  private readonly List<User> _users = new();
-
-        // private readonly List <Person> _persons= new();
-
-        // private readonly List<Place> _places = new(); 
-
 
         private readonly RegistrationDbContext _context;
 
@@ -48,8 +43,8 @@ namespace ZmogausUzregistravimoSistema.Repositories
 
         public User UpdateUser(int id, UserRequestModel user)
         {
-         
-            var userToUpdate = _context.Users.Where(x => x.Id == id);
+          
+            var userToUpdate = _context.Users.Single(x => x.Id == id);
             userToUpdate.Name = user.Name;
             userToUpdate.Password = user.Password;
             userToUpdate.Role = user.Role;
@@ -88,7 +83,7 @@ namespace ZmogausUzregistravimoSistema.Repositories
             var newPerson = new Person();
             newPerson.Name = person.Name;
             newPerson.Surname = person.Surname;   
-            newPerson.PersonIdCode= person.PersonIdCode;
+            newPerson.PersonIdCode = person.PersonIdCode;
             newPerson.PhoneNr = person.PhoneNr;
             newPerson.Email = person.Email;
             newPerson.Picture = person.Picture;
@@ -99,11 +94,24 @@ namespace ZmogausUzregistravimoSistema.Repositories
             return newPerson;
         }
 
+        
+
+        /*
+
+        User IRegistrationRepo.AddNewPerson(PersonRequestModel person)
+        {
+            throw new NotImplementedException();
+        }
+        
+        */
+
+
+
 
         public Person UpdatePerson(int id, PersonRequestModel person)
         {
 
-            var personToUpdate = _context.Persons.Where(x => x.Id == id);
+            var personToUpdate = _context.Persons.Single(x => x.Id == id);
             personToUpdate.Name = person.Name;
             personToUpdate.Surname = person.Surname;
             personToUpdate.PersonIdCode = person.PersonIdCode;
@@ -126,6 +134,74 @@ namespace ZmogausUzregistravimoSistema.Repositories
 
         }
 
+        // Updte Person information
+
+        public Person UpdatePersonName(int id, string name)
+        {
+            var personNameUpdate = _context.Persons.Single(x => x.Id == id);
+            personNameUpdate.Name = name;
+            _context.Persons.Add(personNameUpdate);
+            _context.SaveChanges();
+
+            return personNameUpdate;
+
+        }
+
+        public Person UpdatePersonSurname(int id, string surname)
+        {
+            var personSurnameUpdate = _context.Persons.Single(x => x.Id == id);
+            personSurnameUpdate.Surname = surname;
+            _context.Persons.Add(personSurnameUpdate);
+            _context.SaveChanges();
+
+            return personSurnameUpdate;
+
+        }
+
+        public Person UpdatePersonIdCode(int id, int idcode)
+        {
+            var personIdCodeUpdate = _context.Persons.Single(x => x.Id == id);
+            personIdCodeUpdate.PersonIdCode = idcode;
+            _context.Persons.Add(personIdCodeUpdate);
+            _context.SaveChanges();
+
+            return personIdCodeUpdate;
+
+        }
+
+        public Person UpdatePersonPhoneNumber(int id, int phoneNumber)
+        {
+            var personPhoneNrUpdate = _context.Persons.Single(x => x.Id == id);
+            personPhoneNrUpdate.PhoneNr = phoneNumber;
+            _context.Persons.Add(personPhoneNrUpdate);
+            _context.SaveChanges();
+
+            return personPhoneNrUpdate;
+
+        }
+
+        public Person UpdatePersonEmail(int id, string email)
+        {
+            var personEmailUpdate = _context.Persons.Single(x => x.Id == id);
+            personEmailUpdate.Email = email;
+            _context.Persons.Add(personEmailUpdate);
+            _context.SaveChanges();
+
+            return personEmailUpdate;
+
+        }
+
+
+        public Person UpdatePersonPicture(int id, string picture)
+        {
+            var personPictureUpdate = _context.Persons.Single(x => x.Id == id);
+            personPictureUpdate.Picture = picture;
+            _context.Persons.Add(personPictureUpdate);
+            _context.SaveChanges();
+
+            return personPictureUpdate;
+
+        }
 
         //Place
 
@@ -135,7 +211,7 @@ namespace ZmogausUzregistravimoSistema.Repositories
         }
 
 
-        public List<Place> GetPlacesById(int id)
+        public List<Place> GetPlaceById(int id)
         {
             return _context.Places.Where(x => x.Id == id).ToList();
         }
@@ -160,7 +236,7 @@ namespace ZmogausUzregistravimoSistema.Repositories
         public Place UpdatePlace(int id, PlaceRequestModel place)
         {
 
-            var placeToUpdate = _context.Places.Where(x => x.Id == id);
+            var placeToUpdate = _context.Places.Single(x => x.Id == id);
             placeToUpdate.PersonId = place.PersonId;
             placeToUpdate.City = place.City;
             placeToUpdate.Street = place.Street;
@@ -181,6 +257,53 @@ namespace ZmogausUzregistravimoSistema.Repositories
             return delPlace;
 
         }
+
+
+        // Updte Place information
+
+
+        public Place UpdatePlaceCity(int id, string city)
+        {
+            var placeUpdateCity = _context.Places.Single(x => x.Id == id);
+            placeUpdateCity.City = city;
+            _context.Places.Add(placeUpdateCity);
+            _context.SaveChanges();
+
+            return placeUpdateCity;
+        }
+
+        public Place UpdatePlaceStreet(int id, string street)
+        {
+            var placeUpdateStreet = _context.Places.Single(x => x.Id == id);
+            placeUpdateStreet.Street = street;
+            _context.Places.Add(placeUpdateStreet);
+            _context.SaveChanges();
+
+            return placeUpdateStreet;
+        }
+
+        public Place UpdatePlaceHomeNr(int id, int homeNr)
+        {
+            var placeUpdateHomeNr = _context.Places.Single(x => x.Id == id);
+            placeUpdateHomeNr.HomeNr = homeNr;
+            _context.Places.Add(placeUpdateHomeNr);
+            _context.SaveChanges();
+
+            return placeUpdateHomeNr;
+        }
+
+
+        public Place UpdatePlaceFlatNr(int id, int flatNr)
+        {
+            var placeUpdateFlatNr = _context.Places.Single(x => x.Id == id);
+            placeUpdateFlatNr.HomeNr = flatNr;
+            _context.Places.Add(placeUpdateFlatNr);
+            _context.SaveChanges();
+
+            return placeUpdateFlatNr;
+        }
+
+
 
     }
 }
