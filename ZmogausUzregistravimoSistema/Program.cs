@@ -14,7 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IRegistrationRepo, RegistrationRepo>();
+builder.Services.AddScoped<IPersonRepo, PersonRepo>();
+builder.Services.AddScoped<IUserRepo, UserRepo>();
+builder.Services.AddScoped<IPlaceRepo, PlaceRepo>();
 builder.Services.AddDbContext<RegistrationDbContext>
     (options => options.UseSqlServer
     (builder.Configuration.GetConnectionString

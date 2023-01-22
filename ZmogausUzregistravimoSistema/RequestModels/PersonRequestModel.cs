@@ -4,6 +4,7 @@ namespace ZmogausUzregistravimoSistema.RequestModels
 {
     public class PersonRequestModel
     {
+        public int UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
 
@@ -13,7 +14,7 @@ namespace ZmogausUzregistravimoSistema.RequestModels
 
         public string Email { get; set; }
 
-        public string Picture { get; set; }
+        public byte[] Picture { get; set; }
 
         public List<Place> Places = new List<Place>();
     }

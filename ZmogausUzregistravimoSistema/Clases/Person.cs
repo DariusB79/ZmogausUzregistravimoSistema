@@ -3,6 +3,7 @@
     public class Person
     {
         public int Id { get; set; }
+        public int UserId { get; set; } 
         public string Name { get; set; }
         public string Surname { get; set; }
 
@@ -11,7 +12,7 @@
 
         public string Email { get; set; }
 
-        public string Picture { get; set; }
+        public byte[] Picture { get; set; }
 
         public List<Place> Places = new List<Place>();  
     }
